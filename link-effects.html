@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+}
+
+.header .header-top {
+	color: #888;
+	overflow: hidden;
+	line-height: 2.2;
+	padding: 0 12px;
+}
+
+.header .header-top > span {
+	font-size: 0.69em;
+	letter-spacing: 0.1em;
+	float: left;
+}
+
+.header .header-top > span + span {
+	font-size: 0.69em;
+	letter-spacing: 0.1em;
+	float: right;
+}
+
+.header .header-bottom {
+	background-color: rgba(0, 0, 0, 0.05);
+	min-height: 250px;
+	padding: 2em;
+	box-sizing: border-box;
+}
+
+.header .header-bottom h1 {
+	font-size: 2.625em;
+	font-weight: 300;
+	color: #89867e;
+	line-height: 1.3;
+}
+
+.header .header-bottom h1 > p {
+	padding: 0 0 0.6em 0.1em;
+	margin: 0;
+	font-size: 60%;
+	color: #ceccc6;
+}
+
+.header .header-bottom h1 + p {
+	margin: 16px 0;
+	color: #89867e;
+}
+
+.color {
+	padding: 10em 3em;
+	text-align: center;
+}
+
+.color a {
+	position: relative;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	margin: 15px 25px;
+	letter-spacing: 1px;
+	font-weight: 400;
+	font-size: 1.35em;
+	text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+	text-transform: uppercase;
+}
+
+.color1 {
+	background-color: #435a6b;
+}
+
+.color1 a:before {
+	content: " [ ";
+	position: absolute;
+	top: -0.1em;
+	left: 0.1em;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 a:after {
+	content: " ] ";
+	position: absolute;
+	top: -0.1em;
+	right: 0.1em;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 a:hover:before {
+	left: -1em;
+	opacity: 1;
+}
+
+.color1 a:hover:after {
+	right: -1em;
+	opacity: 1;
+}
+
+.color1 + .color2 {
+	background-color: #0e83cd;
+}
+
+.color1 + .color2 a span {
+	position: relative;
+	display: inline-block;
+	padding: 14px;
+	background: #2195de;
+	transition: transform 0.3s;
+	transform-origin: 50% 0;
+	transform-style: preserve-3d;
+}
+
+.color1 + .color2 a span:before {
+	content: attr(before);
+	color: #fff;
+	position: absolute;
+	transform-origin: 50% 0;
+	left: 0;
+	top: 100%;
+	padding: 14px;
+	transform: rotateX(-90deg);
+	background-color: #2195de;
+}
+
+.color1 + .color2 a:hover span {
+	transform: rotatex(90deg) translateY(-28.5px);
+}
+
+.color1 + .color2 + .color3 {
+	background-color: #f19f0f;
+}
+
+.color1 + .color2 + .color3 a:before {
+	content: " ";
+	position: absolute;
+	top: 180%;
+	opacity: 0;
+	width: 100%;
+	height: 4px;
+	background-color: rgba(0, 0, 0, 0.1);
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 a:hover:before {
+	top: 130%;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 {
+	background-color: #3fa46a;
+}
+
+.color1 + .color2 + .color3 + .color4 a:before {
+	content: "";
+	width: 100%;
+	height: 4px;
+	background-color: #fff;
+	position: absolute;
+	top: 105%;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 a:hover:before {
+	top: 150%;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 {
+	background-color: #cd4436;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 a {
+	overflow: hidden;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 a span {
+	position: relative;
+	transition: all .3s;
+	top: 0;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 a span:before {
+	content: attr(before);
+	position: absolute;
+	top: 100%;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 a span:hover {
+	top: -30px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 {
+	background-color: #0e83cd;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 a {
+	padding: 10px 20px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 a:before {
+	content: " ";
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 a:after {
+	content: " ";
+	width: 2px;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 a:hover:before {
+	top: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 a:hover:after {
+	height: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 {
+	color: #ecf0f1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 a {
+	color: #566473;
+	padding: 10px 20px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 a:before {
+	content: " ";
+	width: 80%;
+	height: 4px;
+	background-color: #566473;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 a:after {
+	content: " ";
+	width: 80%;
+	height: 4px;
+	background-color: #566473;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 a:hover:before {
+	opacity: 1;
+	top: 0;
+	width: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 a:hover:after {
+	width: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 {
+	background-color: #435a6b;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 a {
+	padding: 10px 20px;
+	border: 3px solid #354856;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 a:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: -3px;
+	left: -3px;
+	transform: translate(10px, -10px);
+	border: 3px solid #fff;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 a:hover:before {
+	opacity: 1;
+	transform: translate(0px, 0px);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 {
+	background-color: #9e487f;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 a {
+	padding: 18px 20px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 a:before {
+	content: "";
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 a:after {
+	content: attr(after);
+	width: 100%;
+	height: 80%;
+	font-size: .75em;
+	color: rgba(0, 0, 0, 0.5);
+	font-style: italic;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	position: absolute;
+	left: 0;
+	top: 30%;
+	white-space: nowrap;
+	border-bottom: 1px solid #fff;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 a:hover:before {
+	height: 5px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 a:hover:after {
+	top: 100%;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 {
+	background-color: #16a085;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 a {
+	overflow: hidden;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 a span {
+	padding: 10px 20px;
+	display: block;
+	position: relative;
+	left: 0;
+	background-color: #0f7c67;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 a span:before {
+	content: attr(before);
+	padding: 10px 20px;
+	position: absolute;
+	color: #0f7c67;
+	display: block;
+	background-color: #fff;
+	top: 0;
+	left: -100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 a span:hover {
+	left: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 {
+	background-color: #0e83cd;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 a {
+	color: #0972b4;
+	padding: 10px 0;
+	border-top: 2px solid #0972b4;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 a:before {
+	content: attr(before);
+	padding: 10px 0;
+	position: absolute;
+	width: 0%;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	color: #fff;
+	border-bottom: 2px solid #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 a:hover:before {
+	width: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 {
+	background-color: #cd4436;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 a {
+	position: relative;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 a:before {
+	content: "";
+	width: 40px;
+	height: 40px;
+	display: block;
+	position: absolute;
+	border-radius: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 5px solid rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 a:after {
+	content: "";
+	width: 60px;
+	height: 60px;
+	display: block;
+	position: absolute;
+	border-radius: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	transition: all .4s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 a:hover:before, .color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 a:hover:after {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(2);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 {
+	background-color: #f19f0f;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 a:before {
+	content: " ";
+	width: 0px;
+	height: 0px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	transition: all .3s;
+	opacity: 0;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 a:hover:before {
+	box-shadow: -10px 0 #fff, 10px 0 #fff;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 {
+	background-color: #435a6b;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 a {
+	padding: 0 20px;
+	position: relative;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 a:before {
+	content: "";
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 1px;
+	height: 100%;
+	background-color: #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 a:after {
+	content: "";
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+	width: 1px;
+	height: 100%;
+	background-color: #fff;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 a:hover:before {
+	transform: rotate(-90deg);
+	top: -100%;
+	left: 50%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 a:hover:after {
+	transform: rotate(-90deg);
+	top: 100%;
+	right: 50%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 {
+	background-color: #25c56c;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 a {
+	color: rgba(0, 0, 0, 0.2);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 a:before {
+	content: attr(before);
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #fff;
+	opacity: 1;
+	transform: scale(1);
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 a:hover:before {
+	transform: scale(0.9);
+	opacity: 0;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 {
+	background-color: #aab7b7;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 a {
+	color: #6f8686;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 a:before {
+	content: attr(before);
+	color: #fff;
+	position: absolute;
+	transform-origin: 100% 0%;
+	transform: translate(20%, -30%) rotate(15deg);
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 a:hover:before {
+	transform: rotate(0deg);
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 {
+	background-color: #0e83cd;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 a {
+	color: #10649b;
+	position: relative;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 a:before {
+	content: attr(before);
+	position: absolute;
+	color: #fff;
+	left: 0;
+	top: 0;
+	opacity: 1;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 a:after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #fff;
+	opacity: 0;
+	transition: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 a:hover:before {
+	opacity: 0;
+	transform: translate(0, -5px);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 a:hover:after {
+	opacity: 1;
+	transform: translate(0, -5px);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 {
+	background-color: #f19f0f;
+	position: relative;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a {
+	position: relative;
+	padding: 0 5px;
+	color: #b4770d;
+	perspective-origin: center center;
+	z-index: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a:before {
+	content: "";
+	display: block;
+	background-color: #b4770d;
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-20px) rotate(0deg);
+	transition: all .3s;
+	z-index: -1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a:after {
+	content: "";
+	display: block;
+	background-color: #b4770d;
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(20px) rotate(0deg);
+	transition: all .3s;
+	z-index: -1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a:hover {
+	color: #fff;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a:hover:before {
+	transform: translateY(0) rotate(45deg);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 a:hover:after {
+	transform: translateY(0) rotate(-45deg);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 {
+	background-color: #cd4436;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 a {
+	position: relative;
+	margin: 15px;
+	perspective: 800px;
+	width: 200px;
+	line-height: 2em;
+	transform-style: preserve-3d;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 a span {
+	background-color: #e35041;
+	position: relative;
+	padding: 0 14px;
+	width: 100%;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 a span:before {
+	content: attr(before);
+	width: 100%;
+	height: 100%;
+	left: 0;
+	position: absolute;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 {
+	background-color: #435a6b;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 a {
+	background-color: #587285;
+	padding: 3px 15px 0;
+	box-shadow: inset 0 3px #2f4351;
+	transform-origin: 0 50%;
+	transform: all .3s;
+	line-height: 2em;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 a:before {
+	content: attr(before);
+	width: 100%;
+	height: 100%;
+	color: #2f4351;
+	background-color: #fff;
+	line-height: 2em;
+	position: absolute;
+	left: 0;
+	transform-origin: 0 0;
+	transform: rotateX(270deg);
+	transition: transform .5s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 a:hover {
+	background-color: #374c5c;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 a:hover:before {
+	transform: rotateX(0deg);
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 {
+	background-color: #3fa46a;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a {
+	color: #237546;
+	padding: 10px;
+	transform: all .3s;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a:before {
+	content: "";
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	background-color: #fff;
+	left: 0;
+	top: -20%;
+	transition: all .3s;
+	opacity: 0;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a:after {
+	content: "";
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	background-color: #fff;
+	left: 0;
+	bottom: -20%;
+	transition: all .3s;
+	opacity: 0;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a:hover:before {
+	top: 0;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a:hover:after {
+	bottom: 0;
+	opacity: 1;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 a:hover {
+	color: #fff;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 + .color22 {
+	background-color: #0e83cd;
+	color: #fff;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 + .color22 p {
+	font-size: 1.3em;
+	font-weight: 300;
+	font-family: 'Lato', Arial, sans-serif;
+	margin: 21px;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 + .color22 p + p {
+	font-weight: 700;
+}
+
+.color1 + .color2 + .color3 + .color4 + .color5 + .color6 + .color7 + .color8 + .color9 + .color10 + .color11 + .color12 + .color13 + .color14 + .color15 + .color16 + .color17 + .color18 + .color19 + .color20 + .color21 + .color22 p + p + p {
+	font-weight: 700;
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-top">
+<span>PREVIOUS DEMO</span>
+<span>BACK TO THE CODROPS ARTICLE</span>
+</div>
+<div class="header-bottom">
+<h1>Creative Link Effects
+<p>Subtle and modern effects for links or menu items</p>
+</h1>
+<p>Please note that not every browser supports transitions on pseudo elements.</p>
+</div>
+</div>
+<div class="color color1">
+<a href="">WAFTURE</a>
+<a href="">SUMPTUOUS</a>
+<a href="">SCINTILLA</a>
+<a href="">PROPINQUITY</a>
+<a href="">HARBINGER</a>
+</div>
+<div class="color color2">
+<a href="">
+<span before="WAFTURE">WAFTURE</span>
+</a>
+<a href=""><span before="SUMPTUOUS"href="">SUMPTUOUS</span></a>
+<a href=""><span before="SCINTILLA"href="">SCINTILLA</span></a>
+<a href=""><span before="PROPINQUI"href="">PROPINQUI</span></a>
+<a href=""><span before="HARBINGER"href="">HARBINGER</span></a>
+</div>
+<div class="color color3">
+<a href="">PALIMPSEST</a>
+<a href="">INEFFABLE</a>
+<a href="">LILT</a>
+<a href="">MELLIFLUOUS</a>
+<a href="">SERENDIPITY</a>
+</div>
+<div class="color color4">
+<a href="">WOEBEGONE</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color5">
+<a href=""><span before="SERAGLIO">SERAGLIO</span></a>
+<a href=""><span before="SUMPTUOUS">SUMPTUOUS</span></a>
+<a href=""><span before="SCINTILLA">SCINTILLA</span></a>
+<a href=""><span before="PALIMPSEST">PALIMPSEST</span></a>
+<a href=""><span before="ASSEMBLAGE">ASSEMBLAGE</span></a>
+</div>
+<div class="color color6">
+<a href="">UMBRELLA</a>
+<a href="">INEFFABLE</a>
+<a href="">LILT</a>
+<a href="">MELLIFLUOUS</a>
+<a href="">SERENDIPITY</a>
+</div>
+<div class="color color7">
+<a href="">LANGUOR</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color8">
+<a href="">IMBUE</a>
+<a href="">SUMPTUOUS</a>
+<a href="">SCINTILLA</a>
+<a href="">PROPINQUITY</a>
+<a href="">HARBINGER</a>
+</div>
+<div class="color color9">
+<a after="Sumptuous Heart"href="">GOSSAMER</a>
+<a after="Evanescent Life"href="">INEFFABLE</a>
+<a after="Assemblage Love"href="">CHATOYANT</a>
+<a after="Mellifluous Will"href="">MELLIFLUOUS</a>
+<a after="Serendipity Cut"href="">SERENDIPITY</a>
+</div>
+<div class="color color10">
+<a href=""><span before="SERAGLIO">SERAGLIO</span></a>
+<a href=""><span before="SUMPTUOUS">SUMPTUOUS</span></a>
+<a href=""><span before="SCINTILLA">SCINTILLA</span></a>
+<a href=""><span before="PALIMPSEST">PALIMPSEST</span></a>
+<a href=""><span before="ASSEMBLAGE">ASSEMBLAGE</span></a>
+</div>
+<div class="color color11">
+<a before="WAFTURE"href="">WAFTURE</a>
+<a before="SUMPTUOUS"href="">SUMPTUOUS</a>
+<a before="SCINTILLA"href="">SCINTILLA</a>
+<a before="PROPINQUITY"href="">PROPINQUITY</a>
+<a before="HARBINGER"href="">HARBINGER</a>
+</div>
+<div class="color color12">
+<a href="">LANGUOR</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color13">
+<a href="">IMBUE</a>
+<a href="">SUMPTUOUS</a>
+<a href="">SCINTILLA</a>
+<a href="">PROPINQUITY</a>
+<a href="">HARBINGER</a>
+</div>
+<div class="color color14">
+<a href="">WOEBEGONE</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color15">
+<a before="WAFTURE"href="">WAFTURE</a>
+<a before="SUMPTUOUS"href="">SUMPTUOUS</a>
+<a before="SCINTILLA"href="">SCINTILLA</a>
+<a before="PROPINQUITY"href="">PROPINQUITY</a>
+<a before="HARBINGER"href="">HARBINGER</a>
+</div>
+<div class="color color16">
+<a href=""before="SERAGLIO">SERAGLIO</a>
+<a href=""before="SUMPTUOUS">SUMPTUOUS</a>
+<a href=""before="SCINTILLA">SCINTILLA</a>
+<a href=""before="PALIMPSEST">PALIMPSEST</a>
+<a href=""before="ASSEMBLAGE">ASSEMBLAGE</a>
+</div>
+<div class="color color17">
+<a href=""before="SERAGLIO">SERAGLIO</a>
+<a href=""before="SUMPTUOUS">SUMPTUOUS</a>
+<a href=""before="SCINTILLA">SCINTILLA</a>
+<a href=""before="PALIMPSEST">PALIMPSEST</a>
+<a href=""before="ASSEMBLAGE">ASSEMBLAGE</a>
+</div>
+<div class="color color18">
+<a href="">LANGUOR</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color19">
+<a href=""><span before="SERAGLIO">SERAGLIO</span></a>
+<a href=""><span before="SUMPTUOUS">SUMPTUOUS</span></a>
+<a href=""><span before="SCINTILLA">SCINTILLA</span></a>
+<a href=""><span before="PALIMPSEST">PALIMPSEST</span></a>
+<a href=""><span before="ASSEMBLAGE">ASSEMBLAGE</span></a>
+</div>
+<div class="color color20">
+<a href=""before="SERAGLIO">SERAGLIO</a>
+<a href=""before="SUMPTUOUS">SUMPTUOUS</a>
+<a href=""before="SCINTILLA">SCINTILLA</a>
+<a href=""before="PALIMPSEST">PALIMPSEST</a>
+<a href=""before="ASSEMBLAGE">ASSEMBLAGE</a>
+</div>
+<div class="color color21">
+<a href="">LANGUOR</a>
+<a href="">LASSITUDE</a>
+<a href="">MURMUROUS</a>
+<a href="">PALIMPSEST</a>
+<a href="">ASSEMBLAGE</a>
+</div>
+<div class="color color22">
+<p>If you enjoyed these effects you might also like:</p>
+<p>Creative Button Styles</p>
+<p>Simple Icon Hover Effects</p>
+</div>
+</body>
+</html>

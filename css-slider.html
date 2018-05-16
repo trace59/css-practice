@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style type="text/css">
+      body {
+    background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/heic1517a_1.jpg?itok=etTxOfFm);
+    background-repeat: no-repeat;
+    background-size: cover;  
+  }
+
+  .paper1,.paper2,.paper3,.paper4{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 50px;
+    color: tan;
+    position: absolute;
+    top: 700px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .paper1 {
+      left: -600px
+  }
+
+  .paper2 {
+      left: -200px
+  }
+
+  .paper3 {
+      left: 200px
+  }
+
+  .paper4 {
+      left: 600px
+  }
+
+  .content {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+  }
+
+  div {
+    width: 200px;
+    height: 600px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+  }
+
+  img {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+  }
+
+  .first2 {   
+    left: -200px; 
+  }
+
+  .first3 {
+    left: -400px; 
+  }
+
+  .first4 {
+    left: -600px; 
+  }
+
+  #one1,#two1,#three1,#four1,#one2,#two2,#three2,#four2,#one3,#two3,#three3,#four3,#one4,#two4,#three4,#four4 {
+    position: absolute;
+    left: 200px;
+  }
+
+  .paper1:hover~.content>#gather>.pic{
+    left: 0px;
+    transition:left 1s linear;   
+  }
+
+  .paper2:hover~.content>#gather>.pic2{
+    left: 0px;
+    transition:left 1s linear;  
+  }
+
+  .paper3:hover~.content>#gather>.pic3{
+    left: 0px;
+    transition:left 1s linear;  
+  }
+
+  .paper4:hover~.content>#gather>.pic4{
+    left: 0px;
+    transition:left 1s linear;  
+  }
+  </style>
+</head>
+<body>
+  <span class="paper1">N</span>
+  <span class="paper2">A</span>
+  <span class="paper3">S</span>
+  <span class="paper4">A</span>
+  <div class="content">
+  <div id="gather">
+  <div id="one">
+    <img id="pos" class="first1"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754756&di=e82fe0a726375f6008726385fee4904f&imgtype=0&src=http%3A%2F%2Fy1.ifengimg.com%2Fd4a44fff10624b98%2F2013%2F0104%2Frdn_50e619c59ac04.jpg" alt="">
+  </div>
+  <div id="one1" class="pic">
+    <img class="first1"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754863&di=53369c1f69eab3785741b1a5e8e8be2d&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000003132575487.jpg" alt="">
+  </div>
+  <div id="one2" class="pic2">
+  <img class="first1" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754862&di=372733d9b20bd6612e4c13c01f8c5b49&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000064571919611.jpg" alt="">
+ </div>
+ <div id="one3" class="pic3">
+    <img class="first1" src="https://www.nasa.gov/sites/default/files/thumbnails/image/m17-full_jpg.jpg" alt="">
+ </div>
+ <div id="one4" class="pic4">
+    <img class="first1" src="https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/heic1015a.jpg?itok=cWLt70WA" alt="">
+ </div>
+ </div>
+  <div id="gather" >
+  <div id="two"><img class="first2"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754756&di=e82fe0a726375f6008726385fee4904f&imgtype=0&src=http%3A%2F%2Fy1.ifengimg.com%2Fd4a44fff10624b98%2F2013%2F0104%2Frdn_50e619c59ac04.jpg" alt="">
+  </div>
+    <div id="two1" class="pic"><img class="first2"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754863&di=53369c1f69eab3785741b1a5e8e8be2d&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000003132575487.jpg" alt="">
+  </div>
+    <div id="two2" class="pic2">
+  <img class="first2" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754862&di=372733d9b20bd6612e4c13c01f8c5b49&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000064571919611.jpg" alt="">
+  </div>
+    <div id="two3" class="pic3">
+  <img class="first2" src="https://www.nasa.gov/sites/default/files/thumbnails/image/m17-full_jpg.jpg" alt="">
+  </div>
+    <div id="two4" class="pic4">
+  <img class="first2" src="https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/heic1015a.jpg?itok=cWLt70WA" alt="">
+  </div>
+  </div>
+  <div id="gather">
+  <div id="three"><img class="first3"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754756&di=e82fe0a726375f6008726385fee4904f&imgtype=0&src=http%3A%2F%2Fy1.ifengimg.com%2Fd4a44fff10624b98%2F2013%2F0104%2Frdn_50e619c59ac04.jpg" alt="">
+  </div>
+  <div id="three1" class="pic"><img class="first3"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754863&di=53369c1f69eab3785741b1a5e8e8be2d&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000003132575487.jpg" alt="">
+  </div>
+  <div id="three2" class="pic2">
+  <img class="first3" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754862&di=372733d9b20bd6612e4c13c01f8c5b49&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000064571919611.jpg" alt="">
+  </div>
+   <div id="three3" class="pic3">
+  <img class="first3" src="https://www.nasa.gov/sites/default/files/thumbnails/image/m17-full_jpg.jpg" alt="">
+  </div>
+    <div id="three4" class="pic4">
+  <img class="first3" src="https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/heic1015a.jpg?itok=cWLt70WA" alt="">
+  </div>
+  </div>
+  <div id="gather">
+  <div id="four"><img class="first4"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754756&di=e82fe0a726375f6008726385fee4904f&imgtype=0&src=http%3A%2F%2Fy1.ifengimg.com%2Fd4a44fff10624b98%2F2013%2F0104%2Frdn_50e619c59ac04.jpg" alt="">
+  </div>
+  <div id="four1" class="pic"><img class="first4"  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754863&di=53369c1f69eab3785741b1a5e8e8be2d&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000003132575487.jpg" alt="">
+  </div>
+  <div id="four2" class="pic2">
+  <img class="first4" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508344754862&di=372733d9b20bd6612e4c13c01f8c5b49&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2014%2F0225%2FMAIN201402251344000064571919611.jpg" alt="">
+  </div>
+  <div id="four3" class="pic3">
+  <img class="first4" src="https://www.nasa.gov/sites/default/files/thumbnails/image/m17-full_jpg.jpg" alt="">
+  </div>
+    <div id="four4" class="pic4">
+  <img class="first4" src="https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/heic1015a.jpg?itok=cWLt70WA" alt="">
+  </div>
+ </div>
+</div>  
+</body>
+</html>

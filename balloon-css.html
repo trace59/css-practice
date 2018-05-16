@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"content="width=device-width">
+<title>JS Bin</title>
+</head>
+<style>
+* {
+  margin: 0;
+}
+
+html, body {
+  background-color: #ffd748;
+  font-size: 10px;
+}
+
+[date-balloon-pos] {
+  position: relative;
+}
+
+[date-balloon-pos]:before {
+  content: attr(date-balloon);
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 6px 12px;
+  text-align: center;
+  position: absolute;
+  background-color: #333;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all .3s;
+  pointer-events: none;
+}
+
+[date-balloon-pos]:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border: 5px solid transparent;
+  position: absolute;
+  opacity: 0;
+  transition: all .3s;
+}
+
+[date-balloon-pos="up"]:before {
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 10px;
+  transform: translate(-50%, 0);
+}
+
+[date-balloon-pos="up"]:after {
+  border-top: 5px solid #333;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+[date-balloon-pos="up"]:hover:before {
+  transform: translate(-50%, -5px);
+  opacity: 1;
+}
+
+[date-balloon-pos="up"]:hover:after {
+  transform: translate(-50%, -5px);
+  opacity: 1;
+}
+
+[date-balloon-pos="down"] {
+  position: relative;
+}
+
+[date-balloon-pos="down"]:before {
+  top: 100%;
+  left: 50%;
+  margin-top: 10px;
+  transform: translate(-50%, 0);
+}
+
+[date-balloon-pos="down"]:after {
+  border-bottom: 5px solid #333;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+[date-balloon-pos="down"]:hover:before {
+  transform: translate(-50%, 5px);
+  opacity: 1;
+}
+
+[date-balloon-pos="down"]:hover:after {
+  transform: translate(-50%, 5px);
+  opacity: 1;
+}
+
+[date-balloon-pos="left"] {
+  position: relative;
+}
+
+[date-balloon-pos="left"]:before {
+  top: 50%;
+  right: 100%;
+  transform: translate(-10px, -50%);
+}
+
+[date-balloon-pos="left"]:after {
+  border-left: 5px solid #333;
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translate(0px, -50%);
+}
+
+[date-balloon-pos="left"]:hover:before {
+  transform: translate(-15px, -50%);
+  opacity: 1;
+}
+
+[date-balloon-pos="left"]:hover:after {
+  transform: translate(-5px, -50%);
+  opacity: 1;
+}
+
+[date-balloon-pos="right"] {
+  position: relative;
+}
+
+[date-balloon-pos="right"]:before {
+  top: 50%;
+  left: 100%;
+  transform: translate(10px, -50%);
+}
+
+[date-balloon-pos="right"]:after {
+  border-right: 5px solid #333;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0px, -50%);
+}
+
+[date-balloon-pos="right"]:hover:before {
+  transform: translate(15px, -50%);
+  opacity: 1;
+}
+
+[date-balloon-pos="right"]:hover:after {
+  transform: translate(5px, -50%);
+  opacity: 1;
+}
+
+.content {
+  width: 1050px;
+  padding-top: 72px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.content .header {
+  width: 808px;
+  float: left;
+}
+
+.content .header img {
+  width: 272px;
+  height: 82px;
+  vertical-align: middle;
+}
+
+.content .header .star {
+  width: 113px;
+  height: 28px;
+  position: absolute;
+  margin: -2.2rem 0 0 29rem;
+}
+
+.content .header .star a {
+  padding: 0 7px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 12px;
+  background-color: #fff3f6;
+  border: 1px solid #d1d2d3;
+  color: #333;
+  float: left;
+  text-decoration: none;
+}
+
+.content .header .star a + a {
+  margin-left: 5px;
+  position: relative;
+}
+
+.content .header .star a + a:before {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border: 6px solid transparent;
+  border-right: 6px solid #fff3f6;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+h2 {
+  font-size: 3.1rem;
+  font-weight: 300;
+  margin: 2rem 0 0;
+}
+
+h2 + p {
+  font-size: 2.1rem;
+  font-weight: 300;
+  margin: 1.1rem 0;
+}
+
+h2 + p ~ a {
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 1.5rem 3.5rem;
+  margin-top: 1.5rem;
+  background-color: #ff3d2e;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+h2 + p ~ a + a {
+  margin-left: 2rem;
+}
+
+.container {
+  width: 1050px;
+  margin-top: 60px;
+  float: left;
+}
+
+.container span {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.3rem;
+  font-family: Consolas, Monaco, monospace;
+}
+
+.container-code code {
+  display: inline-block;
+  width: 60%;
+  color: #0091ff;
+  background-color: #fff;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 1.4rem;
+  padding: 2.5rem 1.5rem;
+  margin-bottom: 24px;
+  verflow-x: scroll;
+  white-space: nowrap;
+}
+
+.container-code code span {
+  color: red;
+}
+
+.container-code code span + span {
+  color: red;
+}
+
+.container-code code span + span + span {
+  color: #333;
+}
+
+.container-code .balloon {
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+}
+
+.container-code .balloon button {
+  padding: 1.2rem 2.8rem;
+  background-color: #ff3d2e;
+  border: 1px solid #ff3d2e;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.overflow > code {
+  overflow-x: scroll;
+  vertical-align: middle;
+}
+
+.overflow > code + .balloon-medium {
+  vertical-align: middle;
+}
+
+.overflow > code + .balloon-medium button:before {
+  width: 150px;
+  white-space: normal;
+}
+
+.balloon-large button:before {
+  width: 260px;
+  white-space: normal;
+}
+
+.balloon-Xlarge button:before {
+  width: 280px;
+  white-space: normal;
+}
+
+.balloon-fit button:before {
+  width: 100%;
+  white-space: normal;
+}
+
+.balloon-visible button:before, .balloon-visible button:after {
+  opacity: 1;
+}
+
+hr {
+  margin: 7rem 0;
+  height: 10px;
+  width: 100%;
+  background-color: red;
+  border: none;
+  xfloat: left;
+}
+
+footer {
+  color: #fff;
+  background-color: #ff3d2e;
+  text-align: center;
+  width: 100%;
+  padding: 3rem;
+  margin-top: 6rem;
+  font-size: 1.7rem;
+}
+
+</style>
+
+<body>
+<div class="content">
+<div class="header">
+<div class="header1">
+<img src="https://kazzkiq.github.io/balloon.css/assets/img/logo.svg"alt="">
+<div class="star">
+<a href="">star</a>
+<a href="">3, 763</a>
+</div>
+</div>
+<h2>Simple tooltips made of pure CSS</h2>
+<p>Balloon.css lets you add tooltips to elements <b>without JavaScript</b> and in just a few lines of CSS.</p>
+<a href=""date-balloon="https://github.com"date-balloon-pos="up">Github Project</a>
+<a href=""date-balloon="For minified version,visit Github"date-balloon-pos="up">Download CSS</a>
+</div>
+<div class="container">
+<h2 class="title">Positioning</h2>
+<p>For positioning, use <span>data-balloon-pos</span> attribute with one of the values: <span>up</span>, <span>down</span>, <span>left</span> or <span>right</span></p>
+<div class="container-code">
+<code>&lt;
+button data-balloon="<span>Whats up!</span>"data-balloon-pos="<span>up</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="what's up"date-balloon-pos="up">Hover me!</button>
+</div>
+<div class="container-code">
+<code>&lt;
+button data-balloon="<span>Whats up!</span>"data-balloon-pos="<span>left</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="what's up"date-balloon-pos="left">Hover me!</button>
+</div>
+</div>
+<div class="container-code">
+<code>&lt;
+button data-balloon="<span>Whats up!</span>"data-balloon-pos="<span>right</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="what's up"date-balloon-pos="right">Hover me!</button>
+</div>
+</div>
+<div class="container-code">
+<code>&lt;
+button data-balloon="<span>Whats up!</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="what's up"date-balloon-pos="down">Hover me!</button>
+</div>
+</div>
+<h2 class="title">Length</h2>
+<p>By default, tooltips will always remain single-line no matter their length. You can change this behavior by using
+the attribute <span>data-balloon-pos</span> attribute with one of the values: <span>small</span>, <span>medium</span>, <span>large</span> or <span>fit</span></p>
+<div class="container-code  overflow">
+<code>&lt;
+button data-balloon-length="<span>Whats up!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="Hi"date-balloon-pos="up">I'm a small tooltip</button>
+</div>
+</div>
+<div class="container-code overflow">
+<code>&lt;
+button data-balloon-length="<span>Whats up!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span></span>&lt;
+/button></code>
+<div class="balloon balloon-medium">
+<button date-balloon="Now that's a super big text we have over here right? Lorem ipsum dolor sit I'm done."date-balloon-pos="up">I'm medium tooltip</button>
+</div>
+</div>
+<div class="container-code overflow">
+<code>&lt;
+button data-balloon-length="<span>Whats up!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon balloon-large">
+<button date-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"date-balloon-pos="up">I'm a large tooltip.</button>
+</div>
+</div>
+<div class="container-code overflow">
+<code>&lt;
+button data-balloon-length="<span>Whats up!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon balloon-Xlarge">
+<button date-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"date-balloon-pos="up">I'm a Xlarge tooltip.</button>
+</div>
+</div>
+<div class="container-code overflow">
+<code>&lt;
+button data-balloon-length="<span>Whats up!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon balloon-fit">
+<button date-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"date-balloon-pos="up">My width will fit to element</button>
+</div>
+</div>
+<h2 class="title">Showing tooltips programatically</h2>
+<p>If you want to show tooltips even when user interaction isn't happening, you can simply use the<span>data-balloon-visible</span>          attribute: </p>
+<div class="container-code  overflow">
+<code>&lt;
+button data-balloon="<span>I am always visible!</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon balloon-visible">
+<button date-balloon="I am always visible!"date-balloon-pos="up">Always visible!</button>
+</div>
+<h2 style="display: none;"></h2>
+<p>The attribute <span>data-balloon-visible</span> can be easily added via JavaScript (e.g. <span>.setAttribute()</span>), enabling you to show tooltips whenever needed.</p>
+</div>
+<h2 style="margin-top: 4rem;"class="title">Glyphs and Icon Fonts</h2>
+<p>You can also add any HTML special character to your tooltips, or even use third-party Icon fonts: </p>
+<div class="container-code  overflow">
+<code>&lt;
+button data-balloon="<span>HTML special characters: &#9787; &#9986; &#9820;</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="HTML special characters: &#9787; &#9986; &#9820;"date-balloon-pos="up">Hover me!</button>
+</div>
+
+<div class="container-code  overflow">
+<code>&lt;
+button data-balloon="<span>Emojis: 😀 😬 😁 😂 😃 😄 😅 😆</span>"date-balloon="<span>Hi</span>"data-balloon-pos="<span>down</span>"><span>Hover me!</span>&lt;
+/button></code>
+<div class="balloon">
+<button date-balloon="Emojis: 😀 😬 😁 😂 😃 😄 😅 😆"date-balloon-pos="up">Hover me!</button>
+</div>
+</div>
+<hr>
+<h2 class="title">How to use</h2>
+<p>Simply call <b>Balloon.css</b> to your HTML: </p>
+<div class="container-code">
+<code>&lt;
+link rel="<span>stylesheet</span>"href="<span>path/to/balloon.css</span>"></code>
+<h2 style="display: none;"></h2>
+<p>Alternatively, you can use it via CDN (provided by cdnjs):</p>
+<div class="container-code overflow">
+<code>&lt;
+link rel="<span>stylesheet</span>"href="<span>https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css</span>"></code>
+</div>
+<h2 style="display: none;"></h2>
+<p>And add the attributes <span>data-balloon</span> and <span>data-balloon-pos</span> to your HTML elements: </p>
+<div class="container-code">
+<code>&lt;
+span data-balloon="<span>I'm a tooltip.</span>"data-balloon-pos="<span>up</span>">Blablabla&lt;
+/span></code>
+</div>
+<hr>
+<h2>Drawbacks</h2>
+<p>Balloon.css make use of pseudo-elements thus self-closing elements such as <b>&lt;
+img></b>, <b>&lt;
+input></b>              and <b>&lt;
+hr></b> will not render tooltips.</p>
+<h2 style="display: none;"></h2>
+<p>Also keep in mind that if pseudo elements are already in use on an element, the tooltip will conflict with them
+resulting in potential bugs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>Made by Claudio Holanda (@kazzkiq)</footer>
+</body>
+</html>
