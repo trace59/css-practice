@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+
+        @keyframes ratation {
+            from {
+                transform: perspective(500px) rotateX(20deg) rotateZ(20deg);
+            }
+            to {
+                transform: perspective(10000px) rotateX(1360deg) rotateZ(2360deg);
+            }
+        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-style: preserve-3d;
+            perspective-origin: 50% 50%;
+            animation: ratation 30s infinite;
+            animation-play-state: paused;
+        }
+
+        .content:hover {
+            animation-play-state: running;
+        }
+
+        .front {
+            background-blend-mode: screen;
+            background-image: linear-gradient(45deg,#0ff,#00f),
+            linear-gradient(-45deg, #f00,#00f);
+            transform: translateZ(100px);
+        }
+
+        .contrary {
+            background-image: linear-gradient(-135deg, #F00AEC 7%, #00ff00);
+            transform: translateZ(-100px);
+        }
+
+        .left {
+            background-image: linear-gradient(-135deg, #f00aec 14%, #e40001);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .right {
+            background-image: linear-gradient(-45deg, #00ff00 1%, #0300FA);
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+
+        .top {
+            background-image: linear-gradient(-135deg, #F00AEC 5%, #0300FA);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .bottom {
+            background-image: linear-gradient(-45deg, #E40001 5%, #00ff00);
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="front"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="contrary"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+
+</html>
